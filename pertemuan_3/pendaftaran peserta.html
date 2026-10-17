@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pendaftaran Peserta</title>
+<style>
+  body { 
+    font-family: Arial; 
+    background: #eef4ff; 
+  }
+  h2 {
+    color: #0e4aa0;
+    text-align: center;
+  }
+  .box {
+    background: white;
+    border: 1px solid #c9d6e8;
+    padding: 15px;
+    margin: 0 auto 15px auto;
+    max-width: 650px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    background: white;
+  }
+  th {
+    background: #0e4aa0;
+    color: white;
+    padding: 8px;
+  }
+  td {
+    border: 1px solid #c9d6e8;
+    padding: 6px 10px;
+  }
+  tr:nth-child(even) {
+    background: #e6eefb;
+  }
+  button {
+    background: #0e4aa0;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Pendaftaran Peserta</h2>
+
+<div class="box">
+  Nama: <input type="text" value="Samesios latu"><br><br>
+  Jenis Kelamin: 
+    <input type="radio" checked> L
+    <input type="radio"> P<br><br>
+  Jurusan: 
+    <select>
+      <option>Informatika</option>
+      <option>Management</option>
+    </select><br>
+  <button>Kirim</button>
+</div>
+
+<table>
+  <tr>
+    <th>No</th>
+    <th>Nama</th>
+    <th>Jurusan</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Diogo Soares</td>
+    <td>Informatika</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Rivaldo jose</td>
+    <td>Sistem Informasi</td>
+  </tr>
+</table>
+
+</body>
+</html>

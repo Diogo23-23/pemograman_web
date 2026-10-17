@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesuatu untuk Kamu 🌸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        soft: {
+                            main: '#F48FB1',
+                            deep: '#AD1457',
+                            light: '#FFF8FA',
+                        }
+                    },
+                    fontFamily: {
+                        script: ['Dancing Script', 'cursive'],
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        body { 
+            background: linear-gradient(135deg, #FFF8FA 0%, #FCE4EC 30%, #F3E5F5 60%, #E8F5FD 100%); 
+            min-height: 100vh; 
+            overflow-x: hidden;
+        }
+        
+        /* Latar hiasan penuh */
+        .bg-petal {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.35;
+            z-index: 0;
+        }
+        
+        /* Elemen melayang */
+        .floating {
+            position: absolute;
+            opacity: 0;
+            animation: floatUp 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            15% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(-110vh) scale(1.1); }
+        }
+        
+        /* Amplop */
+        .envelope { cursor: pointer; transition: all 0.5s ease; }
+        .envelope:hover { transform: scale(1.05); }
+        .envelope-flap { transform-origin: top center; transition: transform 0.6s ease; }
+        .envelope-open .envelope-flap { transform: rotateX(180deg); }
+        
+        /* Teks berputar & bertemu */
+        .word-left, .word-right {
+            position: absolute;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #AD1457;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .word-left { left: 0; top: 50%; transform: translateY(-50%) rotate(-25deg); }
+        .word-right { right: 0; top: 50%; transform: translateY(-50%) rotate(25deg); }
+        
+        .show-words .word-left {
+            opacity: 1;
+            left: 50%;
+            transform: translate(-120%, -50%) rotate(0deg);
+        }
+        .show-words .word-right {
+            opacity: 1;
+            right: 50%;
+            transform: translate(120%, -50%) rotate(0deg);
+        }
+        
+        /* Simbol di tengah */
+        .heart-center {
+            font-size: 2.5rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.8s ease 1.5s;
+        }
+        .show-words .heart-center {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Pesan muncul setelahnya */
+        .message-final {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 2s;
+        }
+        .show-message .message-final {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Latar hiasan yang diperbanyak -->
+    <div class="bg-petal w-80 h-80 bg-pink-200 top-0 -left-20"></div>
+    <div class="bg-petal w-96 h-96 bg-purple-100 top-10 -right-20"></div>
+    <div class="bg-petal w-72 h-72 bg-blue-100 bottom-0 left-10"></div>
+    <div class="bg-petal w-80 h-80 bg-yellow-100 bottom-10 -right-10"></div>
+    <div class="bg-petal w-64 h-64 bg-rose-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="bg-petal w-56 h-56 bg-pink-100 top-1/3 left-5"></div>
+    <div class="bg-petal w-60 h-60 bg-lavender-100 bottom-1/4 right-5"></div>
+
+    <div id="floatingContainer" class="fixed inset-0 pointer-events-none z-10"></div>
+
+    <div class="max-w-lg w-full text-center relative z-20">
+        
+        <!-- Halaman Awal -->
+        <div id="halamanAwal">
+            <p class="text-soft-deep text-lg mb-2">Ada sesuatu untukmu...</p>
+            <h1 class="font-script text-4xl md:text-5xl text-soft-deep mb-8">
+                Untuk <span class="text-soft-main">Kamu</span>
+            </h1>
+            
+            <div id="amplop" class="envelope mx-auto w-64 h-48 relative" onclick="bukaSurat()">
+                <div class="absolute bottom-0 w-full h-36 bg-white rounded-lg shadow-xl border border-soft-main/20"></div>
+                <div class="envelope-flap absolute top-0 w-full h-28 bg-soft-main/30 rounded-t-lg" style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <span class="text-4xl">🌸</span>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-soft-deep/70">
+                <i class="fa fa-hand-pointer-o mr-2"></i> Ketuk untuk membaca
+            </p>
+        </div>
+
+        <!-- Bagian Isi Pesan -->
+        <div id="bagianIsi" class="hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-10 min-h-[400px] relative">
+                
+                <div id="kotakAnimasi" class="relative h-[180px] flex items-center justify-center mb-6">
+                    <div class="word-left">Aku nyaman</div>
+                    <div class="heart-center">✨</div>
+                    <div class="word-right">dekatmu</div>
+                </div>
+                
+                <div class="message-final space-y-4 text-gray-700 text-lg">
+                    <p>Setiap bertemu denganmu, hariku terasa lebih indah.</p>
+                    <p class="font-script text-xl text-soft-deep">Kamu istimewa bagiku.</p>
+                    <p>Senang sekali bisa mengenal kamu. 💛</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        <!-- Melayang lebih banyak & cepat -->
+        function buatMelayang() {
+            const container = document.getElementById('floatingContainer');
+            const el = document.createElement('div');
+            el.className = 'floating';
+            const isi = ['🌸', '✨', '💛', '🌷', '☁️', '💕', '🌼', '🍃'];
+            el.innerHTML = isi[Math.floor(Math.random() * isi.length)];
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDelay = Math.random() * 5 + 's';
+            el.style.fontSize = (Math.random() * 0.9 + 1) + 'rem';
+            container.appendChild(el);
+            setTimeout(() => el.remove(), 7000);
+        }
+        setInterval(buatMelayang, 500);
+
+        <!-- Buka surat -->
+        function bukaSurat() {
+            const halamanAwal = document.getElementById('halamanAwal');
+            const bagianIsi = document.getElementById('bagianIsi');
+            const kotakAnimasi = document.getElementById('kotakAnimasi');
+            
+            halamanAwal.style.opacity = '0';
+            halamanAwal.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                halamanAwal.classList.add('hidden');
+                bagianIsi.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    kotakAnimasi.classList.add('show-words');
+                }, 300);
+                
+                setTimeout(() => {
+                    bagianIsi.classList.add('show-message');
+                }, 2000);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
