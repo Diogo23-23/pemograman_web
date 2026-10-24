@@ -1,0 +1,81 @@
+/* ======================================
+   SELECTOR ELEMEN — berlaku untuk semua elemen <body>
+   ====================================== */
+body {
+    background-color: #f0f4f8; /* Warna format HEX */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6; /* Jarak antar baris teks */
+    margin: 0;
+    padding: 20px;
+}
+
+/* ======================================
+   SELECTOR GRUP — menerapkan gaya ke h1 DAN h2 sekaligus
+   ====================================== */
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase; /* Mengubah teks menjadi huruf besar semua */
+}
+
+/* ======================================
+   SELECTOR ID — hanya untuk elemen dengan id="kotak-utama"
+   ====================================== */
+#kotak-utama {
+    background-color: rgb(255, 255, 255); /* Warna format RGB */
+    width: 500px; /* Lebar tetap kotak utama */
+    margin: 0 auto; /* Otomatis rata kiri-kanan → posisi di tengah */
+    padding: 30px;
+    border: 2px solid steelblue;
+    border-radius: 15px; /* Sudut melengkung */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================
+   SELECTOR CLASS — untuk elemen dengan class="nama-lengkap"
+   ====================================== */
+.nama-lengkap {
+    color: darkslateblue; /* Warna format NAMA */
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.deskripsi {
+    font-size: 16px;
+    text-align: justify; /* Rata kiri-kanan */
+    color: #333333;
+    margin-bottom: 25px;
+}
+
+/* ======================================
+   SELECTOR TURUNAN (DESCENDANT) — memilih .keahlian yang ada DI DALAM .daftar-keahlian
+   ====================================== */
+.daftar-keahlian .keahlian {
+    display: inline-block; /* Mengubah elemen agar sejajar ke samping */
+    background-color: rgba(70, 130, 180, 0.2); /* Warna format RGBA */
+    color: steelblue;
+    font-size: 14px;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+.tombol-wrapper {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.tombol {
+    display: inline-block; /* Tombol sebagai inline-block */
+    background-color: #4682b4;
+    color: rgb(255, 255, 255);
+    font-family: 'Verdana', sans-serif;
+    font-size: 15px;
+    text-decoration: none; /* Menghilangkan garis bawah tautan */
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.tombol:hover {
+    background-color: #305f82;
+}

@@ -1,85 +1,122 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Pendaftaran Peserta</title>
-<style>
-  body { 
-    font-family: Arial; 
-    background: #eef4ff; 
-  }
-  h2 {
-    color: #0e4aa0;
-    text-align: center;
-  }
-  .box {
-    background: white;
-    border: 1px solid #c9d6e8;
-    padding: 15px;
-    margin: 0 auto 15px auto;
-    max-width: 650px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 650px;
-    margin: auto;
-    background: white;
-  }
-  th {
-    background: #0e4aa0;
-    color: white;
-    padding: 8px;
-  }
-  td {
-    border: 1px solid #c9d6e8;
-    padding: 6px 10px;
-  }
-  tr:nth-child(even) {
-    background: #e6eefb;
-  }
-  button {
-    background: #0e4aa0;
-    color: white;
-    border: none;
-    padding: 7px 18px;
-    margin-top: 10px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>Pendaftaran Peserta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5ff;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #003399;
+        }
+        .form-box {
+            background: #ffffff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #cce0ff;
+            border-radius: 4px;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        input, select, button {
+            padding: 5px;
+            margin-bottom: 12px;
+        }
+        button {
+            background-color: #0047ab;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #003380;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #b3c6ff;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #0047ab;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #eaf0ff;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Pendaftaran Peserta</h2>
+<h1>Pendaftaran Peserta</h1>
 
-<div class="box">
-  Nama: <input type="text" value="Samesios latu"><br><br>
-  Jenis Kelamin: 
-    <input type="radio" checked> L
-    <input type="radio"> P<br><br>
-  Jurusan: 
-    <select>
-      <option>Informatika</option>
-      <option>Management</option>
+<div class="form-box">
+    <label>Nama:</label>
+    <input type="text" id="nama" value="Samesios latu"><br>
+
+    <label>Jenis Kelamin:</label>
+    <input type="radio" name="jk" checked> L
+    <input type="radio" name="jk"> P<br>
+
+    <label>Jurusan:</label>
+    <select id="jurusan">
+        <option>Informatika</option>
+        <option>Sistem Informasi</option>
     </select><br>
-  <button>Kirim</button>
+
+    <label>IPK:</label>
+    <input type="number" id="ipk" step="0.01" min="0" max="4"><br>
+
+    <button type="button">Kirim</button>
 </div>
 
 <table>
-  <tr>
-    <th>No</th>
-    <th>Nama</th>
-    <th>Jurusan</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Diogo Soares</td>
-    <td>Informatika</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Rivaldo jose</td>
-    <td>Sistem Informasi</td>
-  </tr>
+    <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Jurusan</th>
+        <th>IPK</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Diogo Soares</td>
+        <td>Informatika</td>
+        <td>3.75</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Rivaldo Jose</td>
+        <td>management</td>
+        <td>3.62</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Samesios Latu</td>
+        <td>Informatika</td>
+        <td>3.80</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Arlan</td>
+        <td>teknik sipil</td>
+        <td>3.68</td>
+    </tr>
 </table>
 
 </body>
